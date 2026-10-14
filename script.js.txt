@@ -1,0 +1,52 @@
+document.addEventListener('DOMContentLoaded', () => {
+  
+  // --- Gráfico 1: Barras (Categorías de Soporte) ---
+  const ctxBarras = document.getElementById('chartBarras').getContext('2d');
+  new Chart(ctxBarras, {
+    type: 'bar',
+    data: {
+      labels: ['Acceso / Login', 'Facturación', 'Errores Sistema', 'Consultas', 'Hardware'],
+      datasets: [{
+        label: 'Cantidad de Tickets',
+        data: [320, 150, 450, 210, 118],
+        backgroundColor: '#6366f1', // Color Indigo
+        borderRadius: 4
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false }
+      },
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+
+  // --- Gráfico 2: Dona (Estado de Atención) ---
+  const ctxDona = document.getElementById('chartDona').getContext('2d');
+  new Chart(ctxDona, {
+    type: 'doughnut',
+    data: {
+      labels: ['Resueltos', 'En Proceso', 'Abiertos'],
+      datasets: [{
+        data: [1106, 92, 50],
+        backgroundColor: [
+          '#22c55e', // Verde
+          '#eab308', // Amarillo
+          '#ef4444'  // Rojo
+        ]
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom' }
+      }
+    }
+  });
+
+});
